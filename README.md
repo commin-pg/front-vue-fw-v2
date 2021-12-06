@@ -1,4 +1,4 @@
-# test
+# pj-vue-v2
 
 ## Project setup
 ```
