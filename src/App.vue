@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <router-view /> -->
+    <router-view />
     <div v-for="(user, idx) in storeUserList" :key="idx">
       {{ user.name }}
       {{ user.age }}

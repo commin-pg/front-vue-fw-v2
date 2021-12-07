@@ -8,25 +8,33 @@
     >
       <a
         href="javascript:;"
-        :class="{ filterBtn, selected: filterType === filter }"
+        :class="{ selected: storefilterType === filter }"
         >{{ filter }}</a
       >
     </sapn>
   </div>
 </template>
 <script>
+import { mapActions, mapGetters } from "vuex";
+
+const ballStore = "ballStore";
 export default {
-  props: {
-    filterType: { Type: String, default: "NAME_DESC" },
-  },
   data() {
     return {
       filters: ["NAME_DESC", "NAME_ASC"],
     };
   },
+  computed: {
+    ...mapGetters(ballStore, {
+      storefilterType: "GET_FILTER_TYPE",
+    }),
+  },
   methods: {
+    ...mapActions(ballStore, {
+      storeUpdateFilter: "AC_UPDATE_FILTER",
+    }),
     handleFilter(filter) {
-      this.$emit("onUpdateFilter", filter);
+      this.storeUpdateFilter(filter);
     },
   },
 };

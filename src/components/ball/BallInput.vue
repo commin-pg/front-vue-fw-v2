@@ -11,6 +11,8 @@
   </div>
 </template>
 <script>
+import { mapActions } from "vuex";
+const ballStore = "ballStore";
 export default {
   data() {
     return {
@@ -18,11 +20,15 @@ export default {
     };
   },
   methods: {
+    ...mapActions(ballStore, {
+      storeAddBall: "AC_ADD_BALL",
+    }),
     handleBall({ keyCode }) {
       const { name } = this;
       //   console.log("handleBall", name);
       if (keyCode === 13 && name !== "") {
-        this.$emit("insertBall", name);
+        // this.$emit("insertBall", name);
+        this.storeAddBall(name);
         this.name = "";
       }
     },

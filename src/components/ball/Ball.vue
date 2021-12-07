@@ -1,7 +1,7 @@
 <template >
   <div>
     <ul>
-      <li v-for="(ball, idx) in balls" :key="ball.id">
+      <li v-for="(ball, idx) in storeBallList" :key="ball.id">
         <span>{{ idx + 1 }} - {{ ball.name }}</span>
         <button @click="handleDeleteBall(ball.id)">X</button>
       </li>
@@ -9,14 +9,21 @@
   </div>
 </template>
 <script>
+import { mapGetters, mapActions } from "vuex";
+
+const ballStore = "ballStore";
 export default {
-  props: {
-    balls: { type: Array, default: () => [] },
+  computed: {
+    ...mapGetters(ballStore, {
+      storeBallList: "GET_SORTED_BALL_LIST",
+    }),
   },
   methods: {
-    // onDeleteBall
+    ...mapActions(ballStore, {
+      storeDelBall: "AC_DEL_BALL",
+    }),
     handleDeleteBall(id) {
-      this.$emit("onDeleteBall", id);
+      this.storeDelBall(id);
     },
   },
 };
