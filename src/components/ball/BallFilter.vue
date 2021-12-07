@@ -6,9 +6,11 @@
       :key="idx"
       @click="handleFilter(filter)"
     >
-      <a href="javascript:;" :class="{ selected: filterType === filter }">{{
-        filter
-      }}</a>
+      <a
+        href="javascript:;"
+        :class="{ filterBtn, selected: filterType === filter }"
+        >{{ filter }}</a
+      >
     </sapn>
   </div>
 </template>

@@ -19,33 +19,46 @@ export default {
     return {
       balls: [
         // { name: "김형민", num: 1, id: new Date().getTime(), isDel: false },
-        // { name: "이효리", num: 2, id: new Date() + 1, isDel: false },
       ],
       filteredType: "NAME_DESC",
     };
   },
   methods: {
     insertBall(name) {
-      //   sortedList = this.balls.sort((a, b) => a.num - b.num).lastIndexOf();
-
-      //   const nextNum = sortedList;
       const nextNum = this.balls.length + 1;
-      //   console.log(nextNum);
-      this.balls = [
-        ...this.balls,
-        {
-          id: new Date().getTime(),
-          name,
-          num: nextNum,
-          isDel: false,
-        },
-      ];
+      if (name.indexOf(",") > -1) {
+        const strarr = name.split(",");
+
+        for (var i = 0; i < strarr.length; i++) {
+          const n = strarr[i];
+          if (n === "") continue;
+
+          this.balls = [
+            ...this.balls,
+            {
+              id: new Date().getTime() + i,
+              name: n,
+              num: nextNum,
+              isDel: false,
+            },
+          ];
+        }
+      } else {
+        this.balls = [
+          ...this.balls,
+          {
+            id: new Date().getTime(),
+            name,
+            num: nextNum,
+            isDel: false,
+          },
+        ];
+      }
     },
     deleteBall(id) {
       this.balls = this.balls.filter((b) => b.id !== id);
     },
     updateFilter(filter) {
-      // console.log(this.filteredType, filter);
       this.filteredType = filter;
     },
   },
