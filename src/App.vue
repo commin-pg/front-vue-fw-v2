@@ -1,19 +1,13 @@
 <template>
   <div>
-    <Left />
-    <Right />
+    <router-view />
   </div>
 </template>
 
 <script>
-import Left from "./components/Left";
-import Right from "./components/Right";
-
+import "./assets/css/main.css";
 export default {
-  components: {
-    Left,
-    Right,
-  },
+  components: {},
 };
 </script>
 
