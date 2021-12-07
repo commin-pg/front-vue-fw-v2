@@ -1,9 +1,8 @@
 <template >
   <div>
     <BallInput />
-    <!-- <Ball v-bind:balls="filteredList" @onDeleteBall="deleteBall" /> -->
-    <Ball />
     <BallFilter />
+    <Ball />
   </div>
 </template>
 <script>
