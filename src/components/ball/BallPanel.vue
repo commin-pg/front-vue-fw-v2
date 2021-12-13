@@ -17,7 +17,7 @@ export default {
     BallInput,
     BallFilter,
   },
-  methods: {},
+  methods: {}, 
 };
 </script>
 <style >
